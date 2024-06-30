@@ -39,7 +39,7 @@ namespace Teste_LG
                     {   //REGRA DE NEGOCIO: É PERMITIDO CADASTRAR SOMENTE ATÉ 5 MOTORISTA ADICIONAIS
                         Sql = null; //VARIVEL QUERY
                         Sql = "Select COUNT(*) from motoristaAdicionais where id_colab = '" + int.Parse(textColabID.Text) + "'" ;
-                        int QtdeMotAdicionais = (int)ConexaoBD.Contador(Sql);
+                        int QtdeMotAdicionais = (int)ConexaoBD.ConsultaValores(Sql);
 
 
                         if (QtdeMotAdicionais < 5) //SÓ SALVAR DEPOIS DE CHECAR NO BANCO SE TEM MENOS DE 5 OU 5 MOTORISTA ADICIONAL
@@ -134,12 +134,27 @@ namespace Teste_LG
 
                         MessageBox.Show("Erro no Grid: \n" + ex);
                     }
+                }else if (flag == 0)
+                {
+                    //LIMPA DADOS COLABORADOR
+                    textColabID.Clear();
+                    textNomeColab.Clear();
+                    comboDepartamento.Text = "";
+
+                    //LIMPA DADOS MOTORISTA ADICIONAIS
+                    dataGridMotAdicionais.Rows.Clear();
+
+                    textIDMotAdc.Clear();
+                    textNomeMotAdc.Clear();
+                    maskedTelefone.Clear();
+                    comboRelacMotAdc.Text = "";
                 }
 
             }
             else if (textPesquisa.Text == "")
             {
                 MessageBox.Show("Campo de pesquisa em branco");
+                
             }
 
         }
@@ -178,10 +193,6 @@ namespace Teste_LG
             Sql = "Select * from MOTORISTAADICIONAIS where id_colab = '" + int.Parse(textColabID.Text) + "'";
 
             List<MotoristaAdicional> motAdic = ConexaoBD.SelectMotAdicional(Sql);
-
-            DataTable dt = new DataTable();
-
-
             dataGridMotAdicionais.Rows.Clear();
 
             foreach (MotoristaAdicional motAdicional in motAdic)
@@ -189,10 +200,46 @@ namespace Teste_LG
 
                 dataGridMotAdicionais.Rows.Add(motAdicional.Id_MotAdicional, motAdicional.Nome, motAdicional.Telefone, motAdicional.Grau_Parentesco);
 
-
             }
 
         }
 
+        private void dataGridMotAdicionais_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            String Sql = null; //variavel para passar ao banco, query
+
+            if (e.RowIndex >= 0)
+            {    
+                Sql = null;
+
+                int id = (int)dataGridMotAdicionais.Rows[e.RowIndex].Cells[0].Value;
+
+                Sql = "Select * from MOTORISTAADICIONAIS WHERE id_colab ='" + textColabID.Text + "' AND id_mot_adicional ='" + id + "'";
+
+                List<MotoristaAdicional> motAdic = ConexaoBD.SelectMotAdicional(Sql);
+
+                textIDMotAdc.Clear();
+                textNomeMotAdc.Clear();
+                maskedTelefone.Clear();
+                comboRelacMotAdc.Text = "";
+
+                foreach (MotoristaAdicional motadicional in motAdic)
+                {
+                    textIDMotAdc.Text = motadicional.Id_MotAdicional.ToString();
+                    textNomeMotAdc.Text = motadicional.Nome.ToString();
+                    maskedTelefone.Text = motadicional.Telefone.ToString();
+                    comboRelacMotAdc.Text = motadicional.Grau_Parentesco.ToString();
+                }
+
+            }
+        }
+
+        private void buttonNovo_Click(object sender, EventArgs e)
+        {
+            textIDMotAdc.Clear();
+            textNomeMotAdc.Clear();
+            maskedTelefone.Clear();
+            comboRelacMotAdc.Text = "";
+        }
     }
 }

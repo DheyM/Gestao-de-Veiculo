@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormColaborador));
             this.labelNome = new System.Windows.Forms.Label();
             this.textNome = new System.Windows.Forms.TextBox();
             this.panelCadColaborador = new System.Windows.Forms.Panel();
+            this.LabelVinculaMot = new System.Windows.Forms.Label();
+            this.buttonLimpar = new System.Windows.Forms.Button();
             this.buttonPesquisar = new System.Windows.Forms.Button();
             this.maskedTelefone = new System.Windows.Forms.MaskedTextBox();
             this.textPesquisa = new System.Windows.Forms.TextBox();
@@ -43,9 +46,11 @@
             this.labelDepartamento = new System.Windows.Forms.Label();
             this.labelTelefone = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.buttonLimpar = new System.Windows.Forms.Button();
+            this.Label = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelCadColaborador.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelNome
@@ -71,6 +76,8 @@
             // panelCadColaborador
             // 
             this.panelCadColaborador.AutoSize = true;
+            this.panelCadColaborador.Controls.Add(this.pictureBox1);
+            this.panelCadColaborador.Controls.Add(this.LabelVinculaMot);
             this.panelCadColaborador.Controls.Add(this.buttonLimpar);
             this.panelCadColaborador.Controls.Add(this.buttonPesquisar);
             this.panelCadColaborador.Controls.Add(this.maskedTelefone);
@@ -90,6 +97,26 @@
             this.panelCadColaborador.Name = "panelCadColaborador";
             this.panelCadColaborador.Size = new System.Drawing.Size(687, 398);
             this.panelCadColaborador.TabIndex = 2;
+            // 
+            // LabelVinculaMot
+            // 
+            this.LabelVinculaMot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelVinculaMot.Location = new System.Drawing.Point(31, 278);
+            this.LabelVinculaMot.Name = "LabelVinculaMot";
+            this.LabelVinculaMot.Size = new System.Drawing.Size(150, 41);
+            this.LabelVinculaMot.TabIndex = 18;
+            this.LabelVinculaMot.Text = "Vincula Motorista Adicional";
+            this.LabelVinculaMot.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // buttonLimpar
+            // 
+            this.buttonLimpar.Location = new System.Drawing.Point(308, 354);
+            this.buttonLimpar.Name = "buttonLimpar";
+            this.buttonLimpar.Size = new System.Drawing.Size(116, 31);
+            this.buttonLimpar.TabIndex = 16;
+            this.buttonLimpar.Text = "Limpar";
+            this.buttonLimpar.UseVisualStyleBackColor = true;
+            this.buttonLimpar.Click += new System.EventHandler(this.buttonLimpar_Click);
             // 
             // buttonPesquisar
             // 
@@ -195,15 +222,23 @@
             this.labelTelefone.TabIndex = 2;
             this.labelTelefone.Text = "Telefone:";
             // 
-            // buttonLimpar
+            // Label
             // 
-            this.buttonLimpar.Location = new System.Drawing.Point(308, 354);
-            this.buttonLimpar.Name = "buttonLimpar";
-            this.buttonLimpar.Size = new System.Drawing.Size(116, 31);
-            this.buttonLimpar.TabIndex = 16;
-            this.buttonLimpar.Text = "Limpar";
-            this.buttonLimpar.UseVisualStyleBackColor = true;
-            this.buttonLimpar.Click += new System.EventHandler(this.buttonLimpar_Click);
+            this.Label.Location = new System.Drawing.Point(41, 285);
+            this.Label.Name = "Label";
+            this.Label.Size = new System.Drawing.Size(172, 21);
+            this.Label.TabIndex = 18;
+            this.Label.Text = "label1";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(46, 322);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(119, 63);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
             // 
             // FormColaborador
             // 
@@ -216,6 +251,7 @@
             this.panelCadColaborador.ResumeLayout(false);
             this.panelCadColaborador.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,6 +274,9 @@
         private System.Windows.Forms.MaskedTextBox maskedTelefone;
         private System.Windows.Forms.Button buttonPesquisar;
         private System.Windows.Forms.Button buttonLimpar;
+        private System.Windows.Forms.Label LabelVinculaMot;
+        private System.Windows.Forms.Label Label;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

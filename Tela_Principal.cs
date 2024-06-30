@@ -16,5 +16,19 @@ namespace Teste_LG
         {
             InitializeComponent();
         }
+
+
+
+        private void pictureCarro_Click(object sender, EventArgs e)
+        {
+            FormCarro formCarro = new FormCarro();
+            formCarro.Show();
+        }
+
+        private void pictureColaborador_Click(object sender, EventArgs e)
+        {
+            FormColaborador formColaborador = new FormColaborador();
+            formColaborador.Show();
+        }
     }
 }

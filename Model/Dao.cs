@@ -124,6 +124,8 @@ namespace Model
             }
         }
 
+
+        /*
         //SELECT FAZ UM COUNT NO BANCO PARA SABER QUANTIDADE DE REGISTRO EXISTENTE. LIMITANDO A 5 CADASTRO DE MOTORISTA ADICIONAL
         public int Contador(String sqlText)
         {
@@ -157,7 +159,7 @@ namespace Model
                 con.Close();
             }
             return contador;
-        }
+        }*/
 
         public int ConsultaValores(String sqlText) //UTILIZADO PARA PEGAR O NUMERO DE SEQUENCIA ID, UTILIZADO EM MOTADICIONAIS
         {
@@ -209,7 +211,6 @@ namespace Model
             //instancia variavel para executar comados no banco
 
             List<Colaborador> listColaborador = new List<Colaborador>();
-            Colaborador colaborador = new Colaborador();
 
             try
             { 
@@ -227,12 +228,16 @@ namespace Model
 
                     while (reader.Read())
                     {
+                        Colaborador colaborador = new Colaborador();
+
                         colaborador.Id_Colab = ((int)reader["id_colab"]);
                         colaborador.Nome = (string)reader["nome"];
                         colaborador.Telefone = (string)reader["telefone"];
                         colaborador.Departamento = (string)reader["departamento"];
+
+                        listColaborador.Add(colaborador);
                     }
-                    listColaborador.Add(colaborador);
+                    
 
                 }
                 else
@@ -265,7 +270,7 @@ namespace Model
             //instancia variavel para executar comados no banco
 
             List<MotoristaAdicional> listMotoristaAdicional = new List<MotoristaAdicional>();
-            MotoristaAdicional motAdic = new MotoristaAdicional();
+            //MotoristaAdicional motAdic = new MotoristaAdicional();
 
             try
             {
@@ -280,16 +285,26 @@ namespace Model
 
                 if (reader.HasRows)
                 {
+                    //foreach (MotoristaAdicional motorista in listMotoristaAdicional) ^{ 
+                    //}
+
+                    
 
                     while (reader.Read())
                     {
-                        motAdic.Id_MotAdicional = ((int)reader["id_mot_adicional"]);
-                        motAdic.Nome = (string)reader["nome"];
-                        motAdic.Telefone = (string)reader["telefone"];
-                        motAdic.Grau_Parentesco = (string)reader["grau_parentesco"];
-                        //motAdic.Id_Colab = ((int)reader["id_colab"]);
+                            //INSTANCIA DA CLASSE DE MOTORISTA OCORRE DENTRO DO WHILE DE LEITURA
+                            MotoristaAdicional motAdic = new MotoristaAdicional();
+
+                            //PASSANDO PARAMENTROS PARA CLASSE
+                            motAdic.Id_MotAdicional = ((int)reader["id_mot_adicional"]);
+                            motAdic.Nome = (string)reader["nome"];
+                            motAdic.Telefone = (string)reader["telefone"];
+                            motAdic.Grau_Parentesco = (string)reader["grau_parentesco"];
+
+                            //USADO PARA ADICIONAR A UM LIST OS VALORES
+                            listMotoristaAdicional.Add(motAdic);
+
                     }
-                    listMotoristaAdicional.Add(motAdic);
 
                 }
                 else
@@ -310,10 +325,10 @@ namespace Model
             return listMotoristaAdicional;
         }
 
-        /*
+
         //CLASSE QUE FAZ ACESSO NO BANCO PARA OBTER REGISTRO EXISTENTES CARRO, VINCULADO A COLABORADOR E MOTORISTA ADICIONAIS
 
-        public List<Colaborador> SelectCarro(String sqlText)
+        public List<Carro> SelectCarro(String sqlText)
         {
             // variavel de conexão e instanciando
             SqlConnection con = new SqlConnection();
@@ -321,8 +336,8 @@ namespace Model
             con.ConnectionString = conexao;
             //instancia variavel para executar comados no banco
 
-            List<Colaborador> listColaborador = new List<Colaborador>();
-            Colaborador colaborador = new Colaborador();
+            List<Carro> listCarro = new List<Carro>();
+            //MotoristaAdicional motAdic = new MotoristaAdicional();
 
             try
             {
@@ -334,14 +349,38 @@ namespace Model
                 con.Open();
                 //executa a query
                 SqlDataReader reader = cm.ExecuteReader();
-                while (reader.Read())
+
+                if (reader.HasRows)
                 {
-                    colaborador.Id_Colab = ((int)reader["id_colab"]);
-                    colaborador.Nome = (string)reader["nome"];
-                    colaborador.Telefone = (string)reader["telefone"];
-                    colaborador.Departamento = (string)reader["departamento"];
+                    //foreach (MotoristaAdicional motorista in listMotoristaAdicional) ^{ 
+                    //}
+
+
+
+                    while (reader.Read())
+                    {
+                        //INSTANCIA DA CLASSE DE MOTORISTA OCORRE DENTRO DO WHILE DE LEITURA
+                        Carro carro = new Carro();
+
+                        //PASSANDO PARAMENTROS PARA CLASSE
+                        carro.Id_carro = ((int)reader["id_carro"]);
+                        carro.Name = (string)reader["nome"];
+                        carro.Name = (string)reader["placa"];
+                        carro.Id_motorista_principal = (int)reader["Id_motorista_principal"];
+                        carro.Id_motorista_adicional = (int)reader["Id_motorista_adicionais"];
+
+                        //USADO PARA ADICIONAR A UM LIST OS VALORES
+                        listCarro.Add(carro);
+
+                    }
+
                 }
-                listColaborador.Add(colaborador);
+                else
+                {
+                    MessageBox.Show("Não existe Motorista Adicional!");
+                }
+
+
             }
             catch (Exception e)
             {
@@ -351,10 +390,9 @@ namespace Model
             {
                 con.Close();
             }
-
-            return listColaborador;
+            return listCarro;
         }
-        */
+
 
 
 

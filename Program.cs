@@ -16,7 +16,7 @@ namespace Teste_LG
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMotAdicionais());
+            Application.Run(new FormCarro());
         }
     }
 }

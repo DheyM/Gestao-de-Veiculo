@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.Panel panelCadColaborador;
+            this.textPesquisa = new System.Windows.Forms.TextBox();
+            this.buttonPesquisar = new System.Windows.Forms.Button();
             this.buttonExcluir = new System.Windows.Forms.Button();
             this.buttonNovo = new System.Windows.Forms.Button();
             this.buttonSalvar = new System.Windows.Forms.Button();
@@ -39,9 +41,14 @@
             this.labelNomeColab = new System.Windows.Forms.Label();
             this.textNomeColab = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dataGridMotAdicionais = new System.Windows.Forms.DataGridView();
+            this.ColumnIdMotorista = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTelefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGrauParentesco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maskedTelefone = new System.Windows.Forms.MaskedTextBox();
             this.labelObs = new System.Windows.Forms.Label();
             this.labelRegistros = new System.Windows.Forms.Label();
-            this.dataGridMotAdicionais = new System.Windows.Forms.DataGridView();
             this.textNomeMotAdc = new System.Windows.Forms.TextBox();
             this.labelNomeMotAdc = new System.Windows.Forms.Label();
             this.labelTelMotAdc = new System.Windows.Forms.Label();
@@ -49,13 +56,6 @@
             this.labelRelacMotAdc = new System.Windows.Forms.Label();
             this.labelIDMotAdc = new System.Windows.Forms.Label();
             this.textIDMotAdc = new System.Windows.Forms.TextBox();
-            this.buttonPesquisar = new System.Windows.Forms.Button();
-            this.maskedTelefone = new System.Windows.Forms.MaskedTextBox();
-            this.textPesquisa = new System.Windows.Forms.TextBox();
-            this.ColumnIdMotAdicional = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTelefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGrauParentesco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             panelCadColaborador = new System.Windows.Forms.Panel();
             panelCadColaborador.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -83,8 +83,27 @@
             panelCadColaborador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             panelCadColaborador.Location = new System.Drawing.Point(0, 0);
             panelCadColaborador.Name = "panelCadColaborador";
-            panelCadColaborador.Size = new System.Drawing.Size(674, 649);
+            panelCadColaborador.Size = new System.Drawing.Size(677, 649);
             panelCadColaborador.TabIndex = 3;
+            // 
+            // textPesquisa
+            // 
+            this.textPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textPesquisa.Location = new System.Drawing.Point(466, 13);
+            this.textPesquisa.Multiline = true;
+            this.textPesquisa.Name = "textPesquisa";
+            this.textPesquisa.Size = new System.Drawing.Size(87, 30);
+            this.textPesquisa.TabIndex = 27;
+            // 
+            // buttonPesquisar
+            // 
+            this.buttonPesquisar.Location = new System.Drawing.Point(559, 13);
+            this.buttonPesquisar.Name = "buttonPesquisar";
+            this.buttonPesquisar.Size = new System.Drawing.Size(89, 30);
+            this.buttonPesquisar.TabIndex = 26;
+            this.buttonPesquisar.Text = "Pesquisar";
+            this.buttonPesquisar.UseVisualStyleBackColor = true;
+            this.buttonPesquisar.Click += new System.EventHandler(this.buttonPesquisar_Click);
             // 
             // buttonExcluir
             // 
@@ -104,6 +123,7 @@
             this.buttonNovo.TabIndex = 21;
             this.buttonNovo.Text = "Novo";
             this.buttonNovo.UseVisualStyleBackColor = true;
+            this.buttonNovo.Click += new System.EventHandler(this.buttonNovo_Click);
             // 
             // buttonSalvar
             // 
@@ -184,10 +204,10 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.dataGridMotAdicionais);
             this.panel1.Controls.Add(this.maskedTelefone);
             this.panel1.Controls.Add(this.labelObs);
             this.panel1.Controls.Add(this.labelRegistros);
-            this.panel1.Controls.Add(this.dataGridMotAdicionais);
             this.panel1.Controls.Add(this.textNomeMotAdc);
             this.panel1.Controls.Add(this.labelNomeMotAdc);
             this.panel1.Controls.Add(this.labelTelMotAdc);
@@ -199,6 +219,57 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(674, 505);
             this.panel1.TabIndex = 25;
+            // 
+            // dataGridMotAdicionais
+            // 
+            this.dataGridMotAdicionais.AllowUserToAddRows = false;
+            this.dataGridMotAdicionais.AllowUserToDeleteRows = false;
+            this.dataGridMotAdicionais.AllowUserToResizeColumns = false;
+            this.dataGridMotAdicionais.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridMotAdicionais.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridMotAdicionais.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnIdMotorista,
+            this.ColumnNome,
+            this.ColumnTelefone,
+            this.ColumnGrauParentesco});
+            this.dataGridMotAdicionais.Location = new System.Drawing.Point(19, 253);
+            this.dataGridMotAdicionais.Name = "dataGridMotAdicionais";
+            this.dataGridMotAdicionais.ReadOnly = true;
+            this.dataGridMotAdicionais.Size = new System.Drawing.Size(642, 191);
+            this.dataGridMotAdicionais.TabIndex = 28;
+            this.dataGridMotAdicionais.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridMotAdicionais_CellClick);
+            // 
+            // ColumnIdMotorista
+            // 
+            this.ColumnIdMotorista.HeaderText = "ID Motorista";
+            this.ColumnIdMotorista.Name = "ColumnIdMotorista";
+            this.ColumnIdMotorista.ReadOnly = true;
+            // 
+            // ColumnNome
+            // 
+            this.ColumnNome.HeaderText = "ColumnNome";
+            this.ColumnNome.Name = "ColumnNome";
+            this.ColumnNome.ReadOnly = true;
+            // 
+            // ColumnTelefone
+            // 
+            this.ColumnTelefone.HeaderText = "Telefone";
+            this.ColumnTelefone.Name = "ColumnTelefone";
+            this.ColumnTelefone.ReadOnly = true;
+            // 
+            // ColumnGrauParentesco
+            // 
+            this.ColumnGrauParentesco.HeaderText = "Grau Parentesco";
+            this.ColumnGrauParentesco.Name = "ColumnGrauParentesco";
+            this.ColumnGrauParentesco.ReadOnly = true;
+            // 
+            // maskedTelefone
+            // 
+            this.maskedTelefone.Location = new System.Drawing.Point(127, 130);
+            this.maskedTelefone.Mask = "(00) 00000-9999";
+            this.maskedTelefone.Name = "maskedTelefone";
+            this.maskedTelefone.Size = new System.Drawing.Size(150, 26);
+            this.maskedTelefone.TabIndex = 26;
             // 
             // labelObs
             // 
@@ -220,24 +291,6 @@
             this.labelRegistros.Size = new System.Drawing.Size(170, 20);
             this.labelRegistros.TabIndex = 24;
             this.labelRegistros.Text = "Motorista Cadastrados";
-            // 
-            // dataGridMotAdicionais
-            // 
-            this.dataGridMotAdicionais.AllowUserToDeleteRows = false;
-            this.dataGridMotAdicionais.AllowUserToResizeColumns = false;
-            this.dataGridMotAdicionais.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridMotAdicionais.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnIdMotAdicional,
-            this.ColumnNome,
-            this.ColumnTelefone,
-            this.ColumnGrauParentesco});
-            this.dataGridMotAdicionais.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dataGridMotAdicionais.Location = new System.Drawing.Point(19, 244);
-            this.dataGridMotAdicionais.Name = "dataGridMotAdicionais";
-            this.dataGridMotAdicionais.ReadOnly = true;
-            this.dataGridMotAdicionais.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridMotAdicionais.Size = new System.Drawing.Size(628, 195);
-            this.dataGridMotAdicionais.TabIndex = 23;
             // 
             // textNomeMotAdc
             // 
@@ -319,67 +372,11 @@
             this.textIDMotAdc.Size = new System.Drawing.Size(87, 30);
             this.textIDMotAdc.TabIndex = 18;
             // 
-            // buttonPesquisar
-            // 
-            this.buttonPesquisar.Location = new System.Drawing.Point(559, 13);
-            this.buttonPesquisar.Name = "buttonPesquisar";
-            this.buttonPesquisar.Size = new System.Drawing.Size(89, 30);
-            this.buttonPesquisar.TabIndex = 26;
-            this.buttonPesquisar.Text = "Pesquisar";
-            this.buttonPesquisar.UseVisualStyleBackColor = true;
-            this.buttonPesquisar.Click += new System.EventHandler(this.buttonPesquisar_Click);
-            // 
-            // maskedTelefone
-            // 
-            this.maskedTelefone.Location = new System.Drawing.Point(127, 130);
-            this.maskedTelefone.Mask = "(00) 00000-9999";
-            this.maskedTelefone.Name = "maskedTelefone";
-            this.maskedTelefone.Size = new System.Drawing.Size(150, 26);
-            this.maskedTelefone.TabIndex = 26;
-            // 
-            // textPesquisa
-            // 
-            this.textPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textPesquisa.Location = new System.Drawing.Point(466, 13);
-            this.textPesquisa.Multiline = true;
-            this.textPesquisa.Name = "textPesquisa";
-            this.textPesquisa.Size = new System.Drawing.Size(87, 30);
-            this.textPesquisa.TabIndex = 27;
-            // 
-            // ColumnIdMotAdicional
-            // 
-            this.ColumnIdMotAdicional.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnIdMotAdicional.HeaderText = "ID Motorista";
-            this.ColumnIdMotAdicional.Name = "ColumnIdMotAdicional";
-            this.ColumnIdMotAdicional.ReadOnly = true;
-            this.ColumnIdMotAdicional.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnNome
-            // 
-            this.ColumnNome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnNome.HeaderText = "Nome";
-            this.ColumnNome.Name = "ColumnNome";
-            this.ColumnNome.ReadOnly = true;
-            // 
-            // ColumnTelefone
-            // 
-            this.ColumnTelefone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnTelefone.HeaderText = "Telefone";
-            this.ColumnTelefone.Name = "ColumnTelefone";
-            this.ColumnTelefone.ReadOnly = true;
-            // 
-            // ColumnGrauParentesco
-            // 
-            this.ColumnGrauParentesco.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnGrauParentesco.HeaderText = "Grau Parentesco";
-            this.ColumnGrauParentesco.Name = "ColumnGrauParentesco";
-            this.ColumnGrauParentesco.ReadOnly = true;
-            // 
             // FormMotAdicionais
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(674, 643);
+            this.ClientSize = new System.Drawing.Size(677, 652);
             this.Controls.Add(panelCadColaborador);
             this.Name = "FormMotAdicionais";
             this.Text = "FormMotAdicionais";
@@ -410,14 +407,14 @@
         private System.Windows.Forms.Label labelTelMotAdc;
         private System.Windows.Forms.Label labelNomeMotAdc;
         private System.Windows.Forms.TextBox textNomeMotAdc;
-        private System.Windows.Forms.DataGridView dataGridMotAdicionais;
         private System.Windows.Forms.Label labelRegistros;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelObs;
         private System.Windows.Forms.Button buttonPesquisar;
         private System.Windows.Forms.MaskedTextBox maskedTelefone;
         private System.Windows.Forms.TextBox textPesquisa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIdMotAdicional;
+        private System.Windows.Forms.DataGridView dataGridMotAdicionais;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIdMotorista;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNome;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTelefone;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrauParentesco;
