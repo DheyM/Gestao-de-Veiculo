@@ -36,26 +36,35 @@
             this.textNomeColab = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridMotAdicionais = new System.Windows.Forms.DataGridView();
+            this.ColumnIdMotorista = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTelefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGrauParentesco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelMotAdicionais = new System.Windows.Forms.Label();
             this.labelPlacaCarro = new System.Windows.Forms.Label();
             this.LabelNomeVeiculo = new System.Windows.Forms.Label();
             this.textModeloCarro = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.labelVeiculo = new System.Windows.Forms.Label();
-            this.maskedPlaca = new System.Windows.Forms.MaskedTextBox();
-            this.buttonNovo = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.buttonSalvar = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.ColumnIdMotorista = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTelefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGrauParentesco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelIDCarro = new System.Windows.Forms.Label();
             this.textCarroID = new System.Windows.Forms.TextBox();
+            this.maskedPlaca = new System.Windows.Forms.MaskedTextBox();
+            this.labelVeiculo = new System.Windows.Forms.Label();
+            this.buttonNovo = new System.Windows.Forms.Button();
+            this.buttonAdicionaMotorista = new System.Windows.Forms.Button();
+            this.buttonSalvar = new System.Windows.Forms.Button();
+            this.buttonExcluir = new System.Windows.Forms.Button();
+            this.textIDMotAdc = new System.Windows.Forms.TextBox();
+            this.dataGridVinculoCarro = new System.Windows.Forms.DataGridView();
+            this.labelVinculoCarro = new System.Windows.Forms.Label();
+            this.ColumnIdCarro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPlaca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMotorista = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTipoMotorista = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMotAdicionais)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridVinculoCarro)).BeginInit();
             this.SuspendLayout();
             // 
             // textPesquisa
@@ -121,11 +130,14 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.dataGridVinculoCarro);
+            this.panel1.Controls.Add(this.labelVinculoCarro);
+            this.panel1.Controls.Add(this.textIDMotAdc);
             this.panel1.Controls.Add(this.dataGridMotAdicionais);
             this.panel1.Controls.Add(this.labelMotAdicionais);
             this.panel1.Location = new System.Drawing.Point(34, 282);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(684, 247);
+            this.panel1.Size = new System.Drawing.Size(684, 401);
             this.panel1.TabIndex = 37;
             // 
             // dataGridMotAdicionais
@@ -140,11 +152,35 @@
             this.ColumnNome,
             this.ColumnTelefone,
             this.ColumnGrauParentesco});
-            this.dataGridMotAdicionais.Location = new System.Drawing.Point(18, 30);
+            this.dataGridMotAdicionais.Location = new System.Drawing.Point(18, 28);
             this.dataGridMotAdicionais.Name = "dataGridMotAdicionais";
             this.dataGridMotAdicionais.ReadOnly = true;
-            this.dataGridMotAdicionais.Size = new System.Drawing.Size(645, 191);
+            this.dataGridMotAdicionais.Size = new System.Drawing.Size(645, 146);
             this.dataGridMotAdicionais.TabIndex = 28;
+            // 
+            // ColumnIdMotorista
+            // 
+            this.ColumnIdMotorista.HeaderText = "ID Motorista";
+            this.ColumnIdMotorista.Name = "ColumnIdMotorista";
+            this.ColumnIdMotorista.ReadOnly = true;
+            // 
+            // ColumnNome
+            // 
+            this.ColumnNome.HeaderText = "Nome";
+            this.ColumnNome.Name = "ColumnNome";
+            this.ColumnNome.ReadOnly = true;
+            // 
+            // ColumnTelefone
+            // 
+            this.ColumnTelefone.HeaderText = "Telefone";
+            this.ColumnTelefone.Name = "ColumnTelefone";
+            this.ColumnTelefone.ReadOnly = true;
+            // 
+            // ColumnGrauParentesco
+            // 
+            this.ColumnGrauParentesco.HeaderText = "Grau Parentesco";
+            this.ColumnGrauParentesco.Name = "ColumnGrauParentesco";
+            this.ColumnGrauParentesco.ReadOnly = true;
             // 
             // labelMotAdicionais
             // 
@@ -199,90 +235,6 @@
             this.panel2.Size = new System.Drawing.Size(683, 156);
             this.panel2.TabIndex = 44;
             // 
-            // labelVeiculo
-            // 
-            this.labelVeiculo.AutoSize = true;
-            this.labelVeiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVeiculo.Location = new System.Drawing.Point(243, 7);
-            this.labelVeiculo.Name = "labelVeiculo";
-            this.labelVeiculo.Size = new System.Drawing.Size(152, 20);
-            this.labelVeiculo.TabIndex = 29;
-            this.labelVeiculo.Text = "Cadastro de Veículo";
-            // 
-            // maskedPlaca
-            // 
-            this.maskedPlaca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedPlaca.Location = new System.Drawing.Point(129, 77);
-            this.maskedPlaca.Mask = "AAA-0000";
-            this.maskedPlaca.Name = "maskedPlaca";
-            this.maskedPlaca.Size = new System.Drawing.Size(87, 26);
-            this.maskedPlaca.TabIndex = 43;
-            // 
-            // buttonNovo
-            // 
-            this.buttonNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNovo.Location = new System.Drawing.Point(41, 567);
-            this.buttonNovo.Name = "buttonNovo";
-            this.buttonNovo.Size = new System.Drawing.Size(129, 33);
-            this.buttonNovo.TabIndex = 45;
-            this.buttonNovo.Text = "Novo";
-            this.buttonNovo.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(549, 567);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(174, 33);
-            this.button2.TabIndex = 46;
-            this.button2.Text = "Adicionar Motorista";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // buttonSalvar
-            // 
-            this.buttonSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSalvar.Location = new System.Drawing.Point(176, 567);
-            this.buttonSalvar.Name = "buttonSalvar";
-            this.buttonSalvar.Size = new System.Drawing.Size(129, 33);
-            this.buttonSalvar.TabIndex = 47;
-            this.buttonSalvar.Text = "Salvar";
-            this.buttonSalvar.UseVisualStyleBackColor = true;
-            this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(311, 567);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(129, 33);
-            this.button4.TabIndex = 48;
-            this.button4.Text = "Excluir";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // ColumnIdMotorista
-            // 
-            this.ColumnIdMotorista.HeaderText = "ID Motorista";
-            this.ColumnIdMotorista.Name = "ColumnIdMotorista";
-            this.ColumnIdMotorista.ReadOnly = true;
-            // 
-            // ColumnNome
-            // 
-            this.ColumnNome.HeaderText = "Nome";
-            this.ColumnNome.Name = "ColumnNome";
-            this.ColumnNome.ReadOnly = true;
-            // 
-            // ColumnTelefone
-            // 
-            this.ColumnTelefone.HeaderText = "Telefone";
-            this.ColumnTelefone.Name = "ColumnTelefone";
-            this.ColumnTelefone.ReadOnly = true;
-            // 
-            // ColumnGrauParentesco
-            // 
-            this.ColumnGrauParentesco.HeaderText = "Grau Parentesco";
-            this.ColumnGrauParentesco.Name = "ColumnGrauParentesco";
-            this.ColumnGrauParentesco.ReadOnly = true;
-            // 
             // labelIDCarro
             // 
             this.labelIDCarro.AutoSize = true;
@@ -303,14 +255,144 @@
             this.textCarroID.Size = new System.Drawing.Size(87, 30);
             this.textCarroID.TabIndex = 45;
             // 
+            // maskedPlaca
+            // 
+            this.maskedPlaca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedPlaca.Location = new System.Drawing.Point(129, 77);
+            this.maskedPlaca.Mask = "AAA-0000";
+            this.maskedPlaca.Name = "maskedPlaca";
+            this.maskedPlaca.Size = new System.Drawing.Size(87, 26);
+            this.maskedPlaca.TabIndex = 43;
+            // 
+            // labelVeiculo
+            // 
+            this.labelVeiculo.AutoSize = true;
+            this.labelVeiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVeiculo.Location = new System.Drawing.Point(243, 7);
+            this.labelVeiculo.Name = "labelVeiculo";
+            this.labelVeiculo.Size = new System.Drawing.Size(152, 20);
+            this.labelVeiculo.TabIndex = 29;
+            this.labelVeiculo.Text = "Cadastro de Veículo";
+            // 
+            // buttonNovo
+            // 
+            this.buttonNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNovo.Location = new System.Drawing.Point(41, 689);
+            this.buttonNovo.Name = "buttonNovo";
+            this.buttonNovo.Size = new System.Drawing.Size(129, 33);
+            this.buttonNovo.TabIndex = 45;
+            this.buttonNovo.Text = "Novo";
+            this.buttonNovo.UseVisualStyleBackColor = true;
+            this.buttonNovo.Click += new System.EventHandler(this.buttonNovo_Click);
+            // 
+            // buttonAdicionaMotorista
+            // 
+            this.buttonAdicionaMotorista.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdicionaMotorista.Location = new System.Drawing.Point(549, 689);
+            this.buttonAdicionaMotorista.Name = "buttonAdicionaMotorista";
+            this.buttonAdicionaMotorista.Size = new System.Drawing.Size(174, 33);
+            this.buttonAdicionaMotorista.TabIndex = 46;
+            this.buttonAdicionaMotorista.Text = "Adicionar Motorista";
+            this.buttonAdicionaMotorista.UseVisualStyleBackColor = true;
+            this.buttonAdicionaMotorista.Click += new System.EventHandler(this.buttonAdicionaMotorista_Click);
+            // 
+            // buttonSalvar
+            // 
+            this.buttonSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSalvar.Location = new System.Drawing.Point(176, 689);
+            this.buttonSalvar.Name = "buttonSalvar";
+            this.buttonSalvar.Size = new System.Drawing.Size(129, 33);
+            this.buttonSalvar.TabIndex = 47;
+            this.buttonSalvar.Text = "Salvar";
+            this.buttonSalvar.UseVisualStyleBackColor = true;
+            this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
+            // 
+            // buttonExcluir
+            // 
+            this.buttonExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExcluir.Location = new System.Drawing.Point(311, 689);
+            this.buttonExcluir.Name = "buttonExcluir";
+            this.buttonExcluir.Size = new System.Drawing.Size(129, 33);
+            this.buttonExcluir.TabIndex = 48;
+            this.buttonExcluir.Text = "Excluir";
+            this.buttonExcluir.UseVisualStyleBackColor = true;
+            this.buttonExcluir.Click += new System.EventHandler(this.buttonExcluir_Click);
+            // 
+            // textIDMotAdc
+            // 
+            this.textIDMotAdc.Location = new System.Drawing.Point(587, 7);
+            this.textIDMotAdc.Name = "textIDMotAdc";
+            this.textIDMotAdc.Size = new System.Drawing.Size(76, 20);
+            this.textIDMotAdc.TabIndex = 29;
+            this.textIDMotAdc.Visible = false;
+            // 
+            // dataGridVinculoCarro
+            // 
+            this.dataGridVinculoCarro.AllowUserToAddRows = false;
+            this.dataGridVinculoCarro.AllowUserToDeleteRows = false;
+            this.dataGridVinculoCarro.AllowUserToResizeColumns = false;
+            this.dataGridVinculoCarro.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridVinculoCarro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridVinculoCarro.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnIdCarro,
+            this.ColumnModelo,
+            this.ColumnPlaca,
+            this.ColumnMotorista,
+            this.ColumnTipoMotorista});
+            this.dataGridVinculoCarro.Location = new System.Drawing.Point(18, 202);
+            this.dataGridVinculoCarro.Name = "dataGridVinculoCarro";
+            this.dataGridVinculoCarro.ReadOnly = true;
+            this.dataGridVinculoCarro.Size = new System.Drawing.Size(645, 165);
+            this.dataGridVinculoCarro.TabIndex = 31;
+            // 
+            // labelVinculoCarro
+            // 
+            this.labelVinculoCarro.AutoSize = true;
+            this.labelVinculoCarro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVinculoCarro.Location = new System.Drawing.Point(243, 177);
+            this.labelVinculoCarro.Name = "labelVinculoCarro";
+            this.labelVinculoCarro.Size = new System.Drawing.Size(152, 20);
+            this.labelVinculoCarro.TabIndex = 30;
+            this.labelVinculoCarro.Text = "Vinculados ao Carro";
+            // 
+            // ColumnIdCarro
+            // 
+            this.ColumnIdCarro.HeaderText = "ID Carro";
+            this.ColumnIdCarro.Name = "ColumnIdCarro";
+            this.ColumnIdCarro.ReadOnly = true;
+            // 
+            // ColumnModelo
+            // 
+            this.ColumnModelo.HeaderText = "Modelo";
+            this.ColumnModelo.Name = "ColumnModelo";
+            this.ColumnModelo.ReadOnly = true;
+            // 
+            // ColumnPlaca
+            // 
+            this.ColumnPlaca.HeaderText = "Placa";
+            this.ColumnPlaca.Name = "ColumnPlaca";
+            this.ColumnPlaca.ReadOnly = true;
+            // 
+            // ColumnMotorista
+            // 
+            this.ColumnMotorista.HeaderText = "Nome Motorista";
+            this.ColumnMotorista.Name = "ColumnMotorista";
+            this.ColumnMotorista.ReadOnly = true;
+            // 
+            // ColumnTipoMotorista
+            // 
+            this.ColumnTipoMotorista.HeaderText = "Tipo de Motorista";
+            this.ColumnTipoMotorista.Name = "ColumnTipoMotorista";
+            this.ColumnTipoMotorista.ReadOnly = true;
+            // 
             // FormCarro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 622);
-            this.Controls.Add(this.button4);
+            this.ClientSize = new System.Drawing.Size(798, 726);
+            this.Controls.Add(this.buttonExcluir);
             this.Controls.Add(this.buttonSalvar);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonAdicionaMotorista);
             this.Controls.Add(this.buttonNovo);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.textPesquisa);
@@ -327,6 +409,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMotAdicionais)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridVinculoCarro)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,14 +433,22 @@
         private System.Windows.Forms.Label labelVeiculo;
         private System.Windows.Forms.MaskedTextBox maskedPlaca;
         private System.Windows.Forms.Button buttonNovo;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonAdicionaMotorista;
         private System.Windows.Forms.Button buttonSalvar;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonExcluir;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIdMotorista;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNome;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTelefone;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrauParentesco;
         private System.Windows.Forms.Label labelIDCarro;
         private System.Windows.Forms.TextBox textCarroID;
+        private System.Windows.Forms.TextBox textIDMotAdc;
+        private System.Windows.Forms.DataGridView dataGridVinculoCarro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIdCarro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnModelo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlaca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMotorista;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTipoMotorista;
+        private System.Windows.Forms.Label labelVinculoCarro;
     }
 }

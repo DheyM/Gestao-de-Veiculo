@@ -334,10 +334,8 @@ namespace Model
             SqlConnection con = new SqlConnection();
             //passa conexão com base de dados
             con.ConnectionString = conexao;
-            //instancia variavel para executar comados no banco
-
+            //cria uma list carro
             List<Carro> listCarro = new List<Carro>();
-            //MotoristaAdicional motAdic = new MotoristaAdicional();
 
             try
             {
@@ -354,9 +352,6 @@ namespace Model
                 {
                     //foreach (MotoristaAdicional motorista in listMotoristaAdicional) ^{ 
                     //}
-
-
-
                     while (reader.Read())
                     {
                         //INSTANCIA DA CLASSE DE MOTORISTA OCORRE DENTRO DO WHILE DE LEITURA
@@ -371,16 +366,12 @@ namespace Model
 
                         //USADO PARA ADICIONAR A UM LIST OS VALORES
                         listCarro.Add(carro);
-
                     }
-
                 }
                 else
                 {
                     MessageBox.Show("Não existe Motorista Adicional!");
                 }
-
-
             }
             catch (Exception e)
             {
@@ -391,6 +382,61 @@ namespace Model
                 con.Close();
             }
             return listCarro;
+        }
+
+        public List<Tuple<int, string, string, string, string>> SelectCarroGrid(String sqlText)
+        {
+            // variavel de conexão e instanciando
+            SqlConnection con = new SqlConnection();
+            //passa conexão com base de dados
+            con.ConnectionString = conexao;
+            //cria uma list tuple
+            List<Tuple<int, string, string,string,string>> gridCarro = new List<Tuple<int, string, string, string, string>>();
+
+
+            try
+            {
+                //variavel de executar query e instanciando
+                SqlCommand cm = new SqlCommand(sqlText, con);
+                //recebe os sql query passado pela tela
+                cm.CommandText = sqlText;
+                //abre a conexao
+                con.Open();
+                //executa a query
+                SqlDataReader reader = cm.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    //foreach (MotoristaAdicional motorista in listMotoristaAdicional) ^{ 
+                    //}
+                    while (reader.Read())
+                    {
+
+                        int id_carro = Convert.ToInt32(reader["id_carro"]);
+                        string modelo = (string)reader["modelo"];
+                        string placa = (string)reader["placa"];
+                        string nome = (string)reader["nome"];
+                        string tipo = (string)reader["tipo"];
+
+
+                        //USADO PARA ADICIONAR A UM LIST OS VALORES
+                        gridCarro.Add(Tuple.Create(id_carro,modelo,placa,nome,tipo));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Não existe Motorista Adicional!");
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return gridCarro;
         }
 
 
