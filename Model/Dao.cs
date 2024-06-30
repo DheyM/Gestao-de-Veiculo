@@ -360,7 +360,7 @@ namespace Model
                         //PASSANDO PARAMENTROS PARA CLASSE
                         carro.Id_carro = ((int)reader["id_carro"]);
                         carro.Name = (string)reader["nome"];
-                        carro.Name = (string)reader["placa"];
+                        carro.Placa = (string)reader["placa"];
                         carro.Id_motorista_principal = (int)reader["Id_motorista_principal"];
                         carro.Id_motorista_adicional = (int)reader["Id_motorista_adicionais"];
 

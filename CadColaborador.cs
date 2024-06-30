@@ -153,7 +153,7 @@ namespace Teste_LG
             comboDepartamento.Text = "";
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureMotoristaAdicional_Click(object sender, EventArgs e)
         {
             FormMotAdicionais formMotAdicionais = new FormMotAdicionais();
             formMotAdicionais.Show();

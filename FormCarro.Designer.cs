@@ -157,6 +157,7 @@
             this.dataGridMotAdicionais.ReadOnly = true;
             this.dataGridMotAdicionais.Size = new System.Drawing.Size(645, 146);
             this.dataGridMotAdicionais.TabIndex = 28;
+            this.dataGridMotAdicionais.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridMotAdicionais_CellClick);
             // 
             // ColumnIdMotorista
             // 
@@ -324,7 +325,6 @@
             this.textIDMotAdc.Name = "textIDMotAdc";
             this.textIDMotAdc.Size = new System.Drawing.Size(76, 20);
             this.textIDMotAdc.TabIndex = 29;
-            this.textIDMotAdc.Visible = false;
             // 
             // dataGridVinculoCarro
             // 

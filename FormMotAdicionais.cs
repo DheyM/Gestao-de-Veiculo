@@ -165,11 +165,28 @@ namespace Teste_LG
             {
                 if (textColabID.Text != "" && textIDMotAdc.Text != "")
                 {
-                    String Sql = null;
-                    Sql = "delete from MOTORISTAADICIONAIS WHERE id_colab ='" + textColabID.Text + "' AND id_mot_adicional ='" + textIDMotAdc.Text + "'";
+                    {
+                        String Sql = null;
+                        Sql = "delete from MOTORISTAADICIONAIS WHERE id_colab ='" + textColabID.Text + "' AND id_mot_adicional ='" + textIDMotAdc.Text + "'";
 
-                    ConexaoBD.Delete(Sql);
+                        ConexaoBD.Delete(Sql);
+                    }
 
+                    {
+                        String Sql = null;
+                        int flag = 0; //utilizado para validar dados e existencia na tabela
+                        Sql = "select count(*) from CARRO WHERE id_motorista_principal ='" + textColabID.Text + "' AND id_motorista_adicional ='" + textIDMotAdc.Text + "'";
+                        flag = ConexaoBD.ConsultaValores(Sql);
+
+
+                        if(flag != 0)
+                        {
+                            Sql = null;
+                            Sql = "delete from CARRO WHERE id_motorista_principal ='" + textColabID.Text + "' AND id_motorista_adicional ='" + textIDMotAdc.Text + "'";
+                            ConexaoBD.Delete(Sql);
+                        }
+
+                    }
                     motoristaAdicionalGrid();
                 }
                 else if (textColabID.Text == "")

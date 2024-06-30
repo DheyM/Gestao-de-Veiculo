@@ -33,6 +33,7 @@
             this.labelNome = new System.Windows.Forms.Label();
             this.textNome = new System.Windows.Forms.TextBox();
             this.panelCadColaborador = new System.Windows.Forms.Panel();
+            this.pictureMotoristaAdicional = new System.Windows.Forms.PictureBox();
             this.LabelVinculaMot = new System.Windows.Forms.Label();
             this.buttonLimpar = new System.Windows.Forms.Button();
             this.buttonPesquisar = new System.Windows.Forms.Button();
@@ -47,10 +48,9 @@
             this.labelTelefone = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.Label = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelCadColaborador.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureMotoristaAdicional)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelNome
@@ -76,7 +76,7 @@
             // panelCadColaborador
             // 
             this.panelCadColaborador.AutoSize = true;
-            this.panelCadColaborador.Controls.Add(this.pictureBox1);
+            this.panelCadColaborador.Controls.Add(this.pictureMotoristaAdicional);
             this.panelCadColaborador.Controls.Add(this.LabelVinculaMot);
             this.panelCadColaborador.Controls.Add(this.buttonLimpar);
             this.panelCadColaborador.Controls.Add(this.buttonPesquisar);
@@ -97,6 +97,17 @@
             this.panelCadColaborador.Name = "panelCadColaborador";
             this.panelCadColaborador.Size = new System.Drawing.Size(687, 398);
             this.panelCadColaborador.TabIndex = 2;
+            // 
+            // pictureMotoristaAdicional
+            // 
+            this.pictureMotoristaAdicional.Image = ((System.Drawing.Image)(resources.GetObject("pictureMotoristaAdicional.Image")));
+            this.pictureMotoristaAdicional.Location = new System.Drawing.Point(46, 322);
+            this.pictureMotoristaAdicional.Name = "pictureMotoristaAdicional";
+            this.pictureMotoristaAdicional.Size = new System.Drawing.Size(119, 63);
+            this.pictureMotoristaAdicional.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureMotoristaAdicional.TabIndex = 19;
+            this.pictureMotoristaAdicional.TabStop = false;
+            this.pictureMotoristaAdicional.Click += new System.EventHandler(this.pictureMotoristaAdicional_Click);
             // 
             // LabelVinculaMot
             // 
@@ -230,16 +241,6 @@
             this.Label.TabIndex = 18;
             this.Label.Text = "label1";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(46, 322);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(119, 63);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 19;
-            this.pictureBox1.TabStop = false;
-            // 
             // FormColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,8 +251,8 @@
             this.Text = "Cadastro Colaborador";
             this.panelCadColaborador.ResumeLayout(false);
             this.panelCadColaborador.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureMotoristaAdicional)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -276,7 +277,7 @@
         private System.Windows.Forms.Button buttonLimpar;
         private System.Windows.Forms.Label LabelVinculaMot;
         private System.Windows.Forms.Label Label;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureMotoristaAdicional;
     }
 }
 

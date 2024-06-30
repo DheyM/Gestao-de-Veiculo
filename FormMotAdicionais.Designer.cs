@@ -42,10 +42,6 @@
             this.textNomeColab = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridMotAdicionais = new System.Windows.Forms.DataGridView();
-            this.ColumnIdMotorista = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTelefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGrauParentesco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maskedTelefone = new System.Windows.Forms.MaskedTextBox();
             this.labelObs = new System.Windows.Forms.Label();
             this.labelRegistros = new System.Windows.Forms.Label();
@@ -56,6 +52,10 @@
             this.labelRelacMotAdc = new System.Windows.Forms.Label();
             this.labelIDMotAdc = new System.Windows.Forms.Label();
             this.textIDMotAdc = new System.Windows.Forms.TextBox();
+            this.ColumnIdMotorista = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTelefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGrauParentesco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             panelCadColaborador = new System.Windows.Forms.Panel();
             panelCadColaborador.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -239,30 +239,6 @@
             this.dataGridMotAdicionais.TabIndex = 28;
             this.dataGridMotAdicionais.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridMotAdicionais_CellClick);
             // 
-            // ColumnIdMotorista
-            // 
-            this.ColumnIdMotorista.HeaderText = "ID Motorista";
-            this.ColumnIdMotorista.Name = "ColumnIdMotorista";
-            this.ColumnIdMotorista.ReadOnly = true;
-            // 
-            // ColumnNome
-            // 
-            this.ColumnNome.HeaderText = "ColumnNome";
-            this.ColumnNome.Name = "ColumnNome";
-            this.ColumnNome.ReadOnly = true;
-            // 
-            // ColumnTelefone
-            // 
-            this.ColumnTelefone.HeaderText = "Telefone";
-            this.ColumnTelefone.Name = "ColumnTelefone";
-            this.ColumnTelefone.ReadOnly = true;
-            // 
-            // ColumnGrauParentesco
-            // 
-            this.ColumnGrauParentesco.HeaderText = "Grau Parentesco";
-            this.ColumnGrauParentesco.Name = "ColumnGrauParentesco";
-            this.ColumnGrauParentesco.ReadOnly = true;
-            // 
             // maskedTelefone
             // 
             this.maskedTelefone.Location = new System.Drawing.Point(127, 130);
@@ -371,6 +347,30 @@
             this.textIDMotAdc.Name = "textIDMotAdc";
             this.textIDMotAdc.Size = new System.Drawing.Size(87, 30);
             this.textIDMotAdc.TabIndex = 18;
+            // 
+            // ColumnIdMotorista
+            // 
+            this.ColumnIdMotorista.HeaderText = "ID Motorista";
+            this.ColumnIdMotorista.Name = "ColumnIdMotorista";
+            this.ColumnIdMotorista.ReadOnly = true;
+            // 
+            // ColumnNome
+            // 
+            this.ColumnNome.HeaderText = "Nome";
+            this.ColumnNome.Name = "ColumnNome";
+            this.ColumnNome.ReadOnly = true;
+            // 
+            // ColumnTelefone
+            // 
+            this.ColumnTelefone.HeaderText = "Telefone";
+            this.ColumnTelefone.Name = "ColumnTelefone";
+            this.ColumnTelefone.ReadOnly = true;
+            // 
+            // ColumnGrauParentesco
+            // 
+            this.ColumnGrauParentesco.HeaderText = "Grau Parentesco";
+            this.ColumnGrauParentesco.Name = "ColumnGrauParentesco";
+            this.ColumnGrauParentesco.ReadOnly = true;
             // 
             // FormMotAdicionais
             // 

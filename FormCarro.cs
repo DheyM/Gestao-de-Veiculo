@@ -22,33 +22,70 @@ namespace Teste_LG
 
             if (textPesquisa.Text != "")
             {
-                int flag = 0; //Sinalizado de existencia na tabela de banco de dados    
-                Sql = null;
-                Sql = "Select * from colaborador where id_colab = '" + int.Parse(textPesquisa.Text) + "'";
+                int flag = 0; //Sinalizado de existencia na tabela de banco de dados
+                int flagCarro = 0; //Sinalizado de existencia na tabela de banco de dados
+                { 
+                    
+                    Sql = null;
+                    Sql = "Select * from colaborador where id_colab = '" + int.Parse(textPesquisa.Text) + "'";
 
-                List<Colaborador> colaboradores = ConexaoBD.SelectColaborador(Sql);
+                    List<Colaborador> colaboradores = ConexaoBD.SelectColaborador(Sql);
 
-                textColabID.Clear();
-                textNomeColab.Clear();
-                //maskedTelefone.Clear();
+                    textColabID.Clear();
+                    textNomeColab.Clear();
+                    //maskedTelefone.Clear();
 
-                foreach (Colaborador colaborador in colaboradores)
-                {
-                    textColabID.Text = colaborador.Id_Colab.ToString();
-                    textNomeColab.Text = colaborador.Nome.ToString();
-                    //maskedTelefone.Text = colaborador.Telefone.ToString();
+                    foreach (Colaborador colaborador in colaboradores)
+                    {
+                        textColabID.Text = colaborador.Id_Colab.ToString();
+                        textNomeColab.Text = colaborador.Nome.ToString();
+                        //maskedTelefone.Text = colaborador.Telefone.ToString();
 
-                    flag = colaborador.Id_Colab;
+                        flag = colaborador.Id_Colab;
+                    }
                 }
 
 
+                {
+                    Sql = null;
+                    Sql = "Select * from carro where id_motorista_principal = '" + int.Parse(textPesquisa.Text) + "'";
+
+                    List<Carro> listcarros = ConexaoBD.SelectCarro(Sql);
+
+                    maskedPlaca.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+
+                    textCarroID.Clear();
+                    maskedPlaca.Clear();
+                    textModeloCarro.Clear();
+
+                    foreach (Carro carro in listcarros)
+                    {
+                        textCarroID.Text = carro.Id_carro.ToString();
+                        maskedPlaca.Text = carro.Placa.ToString();
+                        textModeloCarro.Text = carro.Name.ToString();
+
+                        flagCarro = carro.Id_carro;
+                    }
+                }
+
                 //BLOCO DATAGRIDVIEW --- ELES BUSCA O COLABORADORES, E CONSULTA SE EXISTE MOTORISTA JÁ ADICIONADO, CASO TENHA ELE MOSTRA TODOS NO GRID
-                if (flag != 0)
+                if (flag != 0 && flagCarro != 0)
                 {
                     try
                     {
                         motoristaAdicionalGrid();
                         CarroGrid();
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show("Erro no Grid: \n" + ex);
+                    }
+                }else if (flag != 0 )
+                {
+                    try
+                    {
+                        motoristaAdicionalGrid();
                     }
                     catch (Exception ex)
                     {
@@ -99,7 +136,7 @@ namespace Teste_LG
 
             //flag = 0; //Sinalizado de existencia na tabela de banco de dados  
             String Sql = null;
-            Sql = "Select * from CARRO_GRID where id_carro = '" + int.Parse(textCarroID.Text) + "'";
+            Sql = "Select * from CARRO_GRID where id_carro IN ( SELECT CAR.id_carro FROM CARRO CAR, colaborador COL WHERE CAR.Id_motorista_principal = '"+ int.Parse(textColabID.Text) + "' ) ";
 
             List<Tuple<int, string, string, string, string>> gridCarroView = ConexaoBD.SelectCarroGrid(Sql);
             dataGridVinculoCarro.Rows.Clear();
@@ -113,27 +150,7 @@ namespace Teste_LG
 
         }
 
-        private void dataGridMotAdicionais_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            String Sql = null; //variavel para passar ao banco, query
-
-            if (e.RowIndex >= 0)
-            {
-
-                int id = (int)dataGridMotAdicionais.Rows[e.RowIndex].Cells[0].Value;
-                Sql = "Select * from carro WHERE id_colab ='" + textColabID.Text + "' AND id_mot_adicional ='" + id + "'";
-
-                List<MotoristaAdicional> motAdic = ConexaoBD.SelectMotAdicional(Sql);
-
-                textIDMotAdc.Clear();
-
-                foreach (MotoristaAdicional motadicional in motAdic)
-                {
-                    textIDMotAdc.Text = motadicional.Id_MotAdicional.ToString();
-                }
-
-            }
-        }
+        
 
         private void buttonSalvar_Click(object sender, EventArgs e)
         {
@@ -313,6 +330,30 @@ namespace Teste_LG
             {
 
                 MessageBox.Show("Entrar em contato com suporte verificar erro excluir: " + ex);
+            }
+        }
+
+        private void dataGridMotAdicionais_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            String Sql = null; //variavel para passar ao banco, query
+
+            if (e.RowIndex >= 0)
+            {
+                Sql = null;
+
+                int id = (int)dataGridMotAdicionais.Rows[e.RowIndex].Cells[0].Value;
+
+                Sql = "Select * from MOTORISTAADICIONAIS WHERE id_colab ='" + textColabID.Text + "' AND id_mot_adicional ='" + id + "'";
+
+                List<MotoristaAdicional> motAdic = ConexaoBD.SelectMotAdicional(Sql);
+
+                textIDMotAdc.Clear();
+
+                foreach (MotoristaAdicional motadicional in motAdic)
+                {
+                    textIDMotAdc.Text = motadicional.Id_MotAdicional.ToString();
+                }
+
             }
         }
     }
