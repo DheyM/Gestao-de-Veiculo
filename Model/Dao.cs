@@ -184,7 +184,7 @@ namespace Model
                 {
                     while (reader.Read())
                     {
-                        numeroSeq = (int)reader[0];
+                        numeroSeq = (int)reader.GetInt32(0);
                     }
                 } 
                

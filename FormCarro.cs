@@ -101,6 +101,8 @@ namespace Teste_LG
 
                     //LIMPA DADOS MOTORISTA ADICIONAIS
                     dataGridMotAdicionais.Rows.Clear();
+                    //LIMPA GRID ADICIONAIS CARRO
+                    dataGridVinculoCarro.Rows.Clear(); 
                 }
 
             }
