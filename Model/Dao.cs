@@ -185,6 +185,7 @@ namespace Model
                     while (reader.Read())
                     {
                         numeroSeq = (int)reader.GetInt32(0);
+                        //numeroSeq = Convert.ToInt32(reader[]);
                     }
                 } 
                
@@ -307,11 +308,6 @@ namespace Model
                     }
 
                 }
-                else
-                {
-                    MessageBox.Show("Não existe Motorista Adicional!");
-                }
-
                 
             }
             catch (Exception e)
@@ -368,10 +364,6 @@ namespace Model
                         listCarro.Add(carro);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Não existe Motorista Adicional!");
-                }
             }
             catch (Exception e)
             {
@@ -384,7 +376,8 @@ namespace Model
             return listCarro;
         }
 
-        public List<Tuple<int, string, string, string, string>> SelectCarroGrid(String sqlText)
+
+        public List<Tuple<int, string, string, string, string>> SelectCarroGrid(String sqlText) ///UTILIZADO A TUPLE PAR GRID DE CARRO
         {
             // variavel de conexão e instanciando
             SqlConnection con = new SqlConnection();
@@ -422,10 +415,6 @@ namespace Model
                         //USADO PARA ADICIONAR A UM LIST OS VALORES
                         gridCarro.Add(Tuple.Create(id_carro,modelo,placa,nome,tipo));
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Não existe Motorista Adicional!");
                 }
             }
             catch (Exception e)

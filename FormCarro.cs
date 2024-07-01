@@ -19,7 +19,6 @@ namespace Teste_LG
         {
             String Sql = null; //variavel para passar ao banco, query
 
-
             if (textPesquisa.Text != "")
             {
                 int flag = 0; //Sinalizado de existencia na tabela de banco de dados
@@ -68,11 +67,21 @@ namespace Teste_LG
                     }
                 }
 
+                //motoristaAdicionalGrid();
+                //CarroGrid();
+
+                
                 //BLOCO DATAGRIDVIEW --- ELES BUSCA O COLABORADORES, E CONSULTA SE EXISTE MOTORISTA JÁ ADICIONADO, CASO TENHA ELE MOSTRA TODOS NO GRID
                 if (flag != 0 && flagCarro != 0)
                 {
                     try
                     {
+                        //LIMPA DADOS MOTORISTA ADICIONAIS
+                        dataGridMotAdicionais.Rows.Clear();
+                        //LIMPA GRID ADICIONAIS CARRO
+                        dataGridVinculoCarro.Rows.Clear();
+
+
                         motoristaAdicionalGrid();
                         CarroGrid();
                     }
@@ -85,7 +94,12 @@ namespace Teste_LG
                 {
                     try
                     {
+                        //LIMPA GRID ADICIONAIS CARRO
+                        dataGridVinculoCarro.Rows.Clear();
+
+
                         motoristaAdicionalGrid();
+                        CarroGrid();
                     }
                     catch (Exception ex)
                     {
@@ -98,6 +112,12 @@ namespace Teste_LG
                     //LIMPA DADOS COLABORADOR
                     textColabID.Clear();
                     textNomeColab.Clear();
+
+                    //LIMPA DADOS VEICULOS
+                    textCarroID.Clear();
+                    textModeloCarro.Clear();
+                    maskedPlaca.Clear();
+                    
 
                     //LIMPA DADOS MOTORISTA ADICIONAIS
                     dataGridMotAdicionais.Rows.Clear();
@@ -238,6 +258,7 @@ namespace Teste_LG
 
             //MOTORISTA ADICIONAL
             dataGridMotAdicionais.Rows.Clear();
+            dataGridVinculoCarro.Rows.Clear();
         }
 
         private void buttonAdicionaMotorista_Click(object sender, EventArgs e)
@@ -317,11 +338,12 @@ namespace Teste_LG
                 if (textColabID.Text != "" && textCarroID.Text != "")
                 {
                     String Sql = null;
-                    Sql = "delete from CARRO WHERE id_motorista_principal ='" + textColabID.Text + "' AND id_motorista_adicional ='" + textIDMotAdc.Text + "'";
+                    Sql = "delete from CARRO WHERE id_motorista_principal ='" + textColabID.Text + "' AND id_motorista_adicionais ='" + textIDMotAdc.Text + "'";
 
                     ConexaoBD.Delete(Sql);
 
                     motoristaAdicionalGrid();
+                    CarroGrid();
                 }
                 else if (textColabID.Text == "" || textCarroID.Text == "")
                 {

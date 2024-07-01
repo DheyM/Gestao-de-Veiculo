@@ -45,7 +45,7 @@ namespace Teste_LG
                         if (QtdeMotAdicionais < 5) //SÓ SALVAR DEPOIS DE CHECAR NO BANCO SE TEM MENOS DE 5 OU 5 MOTORISTA ADICIONAL
                         {   
 
-                            int GeradorIdMotoristaADicional = ConexaoBD.ConsultaValores("Select max(id_mot_adicional) from " +
+                            int GeradorIdMotoristaADicional = ConexaoBD.ConsultaValores("Select ISNULL(max(id_mot_adicional),0) from " +
                                 "motoristaAdicionais where id_colab = '" + int.Parse(textColabID.Text) + "'"); //AQUI E GERADO O ID, GERANDO SEQUENCIAL POR COLABORADOR, FICANDO ORGANIZADO DE 1 A 5
                             GeradorIdMotoristaADicional = GeradorIdMotoristaADicional + 1;
 
@@ -175,14 +175,14 @@ namespace Teste_LG
                     {
                         String Sql = null;
                         int flag = 0; //utilizado para validar dados e existencia na tabela
-                        Sql = "select count(*) from CARRO WHERE id_motorista_principal ='" + textColabID.Text + "' AND id_motorista_adicional ='" + textIDMotAdc.Text + "'";
+                        Sql = "select count(*) from CARRO WHERE id_motorista_principal ='" + textColabID.Text + "' AND id_motorista_adicionais ='" + textIDMotAdc.Text + "'";
                         flag = ConexaoBD.ConsultaValores(Sql);
 
 
                         if(flag != 0)
                         {
                             Sql = null;
-                            Sql = "delete from CARRO WHERE id_motorista_principal ='" + textColabID.Text + "' AND id_motorista_adicional ='" + textIDMotAdc.Text + "'";
+                            Sql = "delete from CARRO WHERE id_motorista_principal ='" + textColabID.Text + "' AND id_motorista_adicionais ='" + textIDMotAdc.Text + "'";
                             ConexaoBD.Delete(Sql);
                         }
 
